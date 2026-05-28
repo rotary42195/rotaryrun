@@ -1,0 +1,1069 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>扶輪馬蹄響｜台中馬拉松社</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+TC:wght@400;600;700&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --gold:#B8972A;--gold-light:#F5E9C0;--gold-dark:#7A600F;
+  --navy:#1A2A4A;--navy-mid:#2C3E6A;--navy-light:#E8EDF6;
+  --red:#C0392B;--white:#FAFAF7;
+  --gray-100:#F4F4F0;--gray-200:#E8E8E0;--gray-500:#888880;--gray-700:#444440;
+  --text:#1A1A18;--radius:8px;--shadow:0 2px 16px rgba(26,42,74,.10);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{font-family:'Noto Sans TC',sans-serif;background:var(--white);color:var(--text);font-size:15px;line-height:1.7;}
+nav{background:var(--navy);position:sticky;top:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;height:58px;box-shadow:0 2px 8px rgba(0,0,0,.3);}
+.nav-logo{font-family:'Noto Serif TC',serif;color:var(--gold);font-size:17px;font-weight:700;letter-spacing:.03em;flex-shrink:0;}
+.nav-logo span{color:rgba(255,255,255,.6);font-weight:300;font-size:12px;margin-left:6px;}
+.nav-desktop{display:flex;gap:3px;}
+.nav-tab{color:rgba(255,255,255,.65);background:none;border:none;padding:6px 12px;border-radius:var(--radius);cursor:pointer;font-size:14px;font-family:'Noto Sans TC',sans-serif;transition:all .2s;white-space:nowrap;}
+.nav-tab:hover{color:#fff;background:rgba(255,255,255,.1);}
+.nav-tab.active{color:var(--gold);background:rgba(184,151,42,.18);}
+.hamburger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:6px;background:none;border:none;}
+.hamburger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.3s;}
+.hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg);}
+.hamburger.open span:nth-child(2){opacity:0;}
+.hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg);}
+.mobile-nav{display:none;position:fixed;top:58px;left:0;right:0;background:var(--navy);z-index:199;padding:.5rem;border-top:1px solid rgba(255,255,255,.1);box-shadow:0 4px 16px rgba(0,0,0,.3);}
+.mobile-nav.open{display:block;}
+.mobile-nav .nav-tab{display:block;width:100%;text-align:left;padding:12px 16px;font-size:15px;border-radius:var(--radius);}
+.view{display:none;animation:fadeIn .25s ease;}
+.view.active{display:block;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:translateY(0)}}
+.hero{background:var(--navy);color:#fff;padding:3.5rem 1.5rem 2.5rem;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,transparent,transparent 40px,rgba(184,151,42,.04) 40px,rgba(184,151,42,.04) 41px);}
+.hero-badge{display:inline-block;background:rgba(184,151,42,.2);color:var(--gold);border:1px solid rgba(184,151,42,.4);padding:4px 14px;border-radius:99px;font-size:12px;letter-spacing:.08em;margin-bottom:.8rem;}
+.hero h1{font-family:'Noto Serif TC',serif;font-size:clamp(1.8rem,6vw,3rem);font-weight:700;letter-spacing:.05em;color:#fff;line-height:1.2;margin-bottom:.4rem;}
+.hero h1 span{color:var(--gold);}
+.hero-sub{color:rgba(255,255,255,.6);font-size:14px;margin:.6rem auto 1.5rem;max-width:480px;}
+.year-badge-hero{display:inline-block;background:rgba(184,151,42,.15);color:var(--gold);border:1px solid rgba(184,151,42,.35);padding:3px 14px;border-radius:99px;font-size:13px;margin-bottom:.5rem;}
+.hero-stats{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap;margin-top:1.5rem;}
+.stat-pill{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.15);border-radius:99px;padding:7px 18px;font-size:13px;}
+.stat-pill strong{color:var(--gold);font-size:17px;margin-right:5px;}
+.container{max-width:840px;margin:0 auto;padding:2rem 1.5rem;}
+.container-wide{max-width:1080px;margin:0 auto;padding:2rem 1.5rem;}
+.section-title{font-family:'Noto Serif TC',serif;font-size:21px;font-weight:700;color:var(--navy);margin-bottom:.3rem;}
+.section-title::after{content:'';display:block;width:32px;height:3px;background:var(--gold);margin-top:5px;}
+.section-desc{color:var(--gray-500);font-size:13px;margin-top:.7rem;margin-bottom:1.3rem;}
+.runners-wall{display:flex;flex-wrap:wrap;gap:8px;margin-top:1rem;}
+.runner-chip{background:#fff;border:1px solid var(--gray-200);border-radius:99px;padding:5px 14px;font-size:13px;color:var(--navy);font-weight:500;box-shadow:0 1px 4px rgba(26,42,74,.07);}
+.signup-entry{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1.8rem;}
+.entry-card{border:2px solid var(--gray-200);border-radius:14px;padding:1.3rem 1rem;cursor:pointer;transition:all .2s;background:#fff;text-align:center;}
+.entry-card:hover{border-color:var(--navy-mid);box-shadow:var(--shadow);}
+.entry-card.active{border-color:var(--navy);background:var(--navy-light);}
+.entry-card.full{grid-column:1/-1;}
+.entry-icon{font-size:28px;margin-bottom:.4rem;}
+.entry-title{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:.2rem;}
+.entry-desc{font-size:12px;color:var(--gray-500);line-height:1.5;}
+.form-card{background:#fff;border:1px solid var(--gray-200);border-radius:14px;padding:1.8rem;box-shadow:var(--shadow);}
+.fsec{font-size:14px;font-weight:700;color:var(--navy);border-left:3px solid var(--gold);padding-left:9px;margin:1.6rem 0 .9rem;}
+.fsec:first-child{margin-top:0;}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;}
+.fg{margin-bottom:.9rem;}
+.fg label{display:block;font-size:13px;font-weight:500;color:var(--gray-700);margin-bottom:4px;}
+.fg label .req{color:var(--red);margin-left:2px;}
+.fg input,.fg select,.fg textarea{width:100%;padding:9px 11px;border:1px solid var(--gray-200);border-radius:var(--radius);font-size:14px;font-family:'Noto Sans TC',sans-serif;color:var(--text);transition:border-color .2s,box-shadow .2s;background:#fff;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{outline:none;border-color:var(--navy);box-shadow:0 0 0 3px rgba(26,42,74,.08);}
+.fg textarea{resize:vertical;min-height:72px;}
+.ev-type-sel{display:grid;grid-template-columns:1fr 1fr;gap:.9rem;margin-bottom:.9rem;}
+.ev-opt{border:2px solid var(--gray-200);border-radius:12px;padding:1rem;cursor:pointer;transition:all .2s;position:relative;}
+.ev-opt:hover{border-color:var(--navy-mid);}
+.ev-opt.selected{border-color:var(--navy);background:var(--navy-light);}
+.ev-opt input[type=radio]{display:none;}
+.ev-opt .ev-icon{font-size:22px;margin-bottom:4px;}
+.ev-opt .ev-name{font-weight:700;font-size:14px;color:var(--navy);margin-bottom:2px;}
+.ev-opt .ev-desc{font-size:12px;color:var(--gray-500);line-height:1.5;}
+.ev-opt .ev-badge{position:absolute;top:7px;right:7px;font-size:10px;background:rgba(184,151,42,.2);color:var(--gold-dark);padding:2px 7px;border-radius:99px;}
+.desig-list{display:flex;flex-direction:column;gap:7px;margin-top:4px;}
+.desig-item{display:flex;align-items:center;gap:9px;padding:9px 13px;border:1px solid var(--gray-200);border-radius:var(--radius);cursor:pointer;transition:all .2s;background:#fff;}
+.desig-item:hover{border-color:var(--navy-mid);background:var(--navy-light);}
+.desig-item.selected{border-color:var(--navy);background:var(--navy-light);}
+.desig-item input[type=radio]{accent-color:var(--navy);}
+.desig-item-name{font-size:14px;font-weight:500;color:var(--navy);}
+.desig-item-note{font-size:12px;color:var(--gray-500);}
+.no-desig{font-size:13px;color:var(--gray-500);padding:10px 13px;background:var(--gray-100);border-radius:var(--radius);}
+.year-info-bar{background:var(--navy-light);border:1px solid rgba(26,42,74,.15);border-radius:9px;padding:9px 14px;font-size:14px;color:var(--navy);margin-bottom:1.1rem;display:flex;align-items:center;gap:7px;}
+.year-info-bar strong{font-size:15px;}
+.pacer-row{display:flex;align-items:center;justify-content:space-between;gap:10px;background:var(--gray-100);border:1px solid var(--gray-200);border-radius:9px;padding:11px 16px;margin-top:.4rem;}
+.pacer-row-left{font-size:14px;color:var(--gray-700);}
+.pacer-row-left strong{color:var(--navy);}
+.btn-pacer-open{display:inline-flex;align-items:center;gap:5px;border:2px dashed var(--gray-500);background:none;color:var(--gray-500);padding:6px 14px;border-radius:99px;font-size:13px;font-family:'Noto Sans TC',sans-serif;cursor:pointer;transition:all .2s;white-space:nowrap;}
+.btn-pacer-open:hover{border-color:var(--navy);color:var(--navy);}
+.btn-pacer-open.filled{border-style:solid;border-color:var(--navy);color:var(--navy);background:var(--navy-light);font-weight:600;}
+.pacer-block{background:var(--navy-light);border:2px solid rgba(26,42,74,.2);border-radius:12px;padding:1.3rem;margin-top:.7rem;display:none;}
+.pacer-block.open{display:block;}
+.pacer-block-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:.3rem;}
+.pacer-block-hdr h4{font-size:14px;font-weight:700;color:var(--navy);}
+.btn-pacer-x{background:none;border:none;font-size:19px;cursor:pointer;color:var(--gray-500);line-height:1;}
+.pacer-block-desc{font-size:13px;color:var(--gray-500);margin-bottom:1rem;line-height:1.6;}
+.upload-zone{border:2px dashed #d0d0c8;border-radius:10px;padding:1.3rem;text-align:center;cursor:pointer;transition:all .2s;background:var(--gray-100);}
+.upload-zone:hover{border-color:var(--navy);background:var(--navy-light);}
+.upload-zone p{font-size:13px;color:var(--gray-500);margin-top:.3rem;}
+.cert-box{border:1px solid var(--gray-200);border-radius:11px;overflow:hidden;margin-bottom:.9rem;}
+.cert-box-hdr{padding:.65rem 1rem;font-size:14px;font-weight:600;color:#fff;}
+.cert-box-body{padding:1rem;}
+.cert-done{display:flex;align-items:center;gap:9px;background:#E8F5E9;border:1px solid #A5D6A7;border-radius:7px;padding:8px 11px;font-size:13px;color:#2E7D32;margin-bottom:.6rem;}
+.cert-done a{color:#1565C0;text-decoration:none;font-weight:600;}
+.cert-preview-img{max-width:100%;max-height:180px;border-radius:7px;border:1px solid var(--gray-200);}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;vertical-align:middle;margin-right:5px;}
+@keyframes sp{to{transform:rotate(360deg)}}
+.found-card{background:var(--navy-light);border:2px solid var(--navy);border-radius:11px;padding:1.1rem 1.3rem;margin-bottom:1.3rem;}
+.found-card-lbl{font-size:12px;color:var(--gray-500);margin-bottom:.5rem;}
+.found-card-name{font-size:19px;font-weight:700;color:var(--navy);font-family:'Noto Serif TC',serif;}
+.found-card-meta{font-size:13px;color:var(--gray-700);margin-top:.3rem;line-height:1.7;}
+.found-card-pacer{margin-top:.7rem;padding-top:.7rem;border-top:1px solid rgba(26,42,74,.15);font-size:13px;}
+.btn-submit{width:100%;padding:12px;background:var(--navy);color:#fff;border:none;border-radius:var(--radius);font-size:15px;font-family:'Noto Sans TC',sans-serif;font-weight:500;cursor:pointer;margin-top:1.3rem;transition:background .2s;}
+.btn-submit:hover{background:var(--navy-mid);}
+.btn-submit:disabled{background:var(--gray-500);cursor:not-allowed;}
+.btn-secondary{width:100%;padding:10px;background:none;color:var(--navy);border:1px solid var(--navy);border-radius:var(--radius);font-size:14px;font-family:'Noto Sans TC',sans-serif;cursor:pointer;margin-top:.5rem;transition:all .2s;}
+.btn-secondary:hover{background:var(--navy-light);}
+.closed-banner{background:rgba(192,57,43,.07);border:1px solid rgba(192,57,43,.2);border-radius:9px;padding:.9rem 1.2rem;color:#c0392b;font-size:14px;margin-bottom:1.3rem;text-align:center;}
+.reg-filter{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:.9rem;}
+.filter-btn{padding:5px 13px;border-radius:99px;border:1px solid var(--gray-200);background:#fff;font-size:13px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all .2s;}
+.filter-btn.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.year-tabs{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:1rem;}
+.year-tab{padding:5px 12px;border-radius:99px;border:1px solid var(--gray-200);background:#fff;font-size:13px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all .2s;}
+.year-tab:hover{border-color:var(--navy);}
+.year-tab.active{background:var(--navy);color:#fff;border-color:var(--navy);}
+.reg-table-wrap{overflow-x:auto;border-radius:9px;border:1px solid var(--gray-200);}
+table{width:100%;border-collapse:collapse;font-size:13px;}
+thead{background:var(--navy);color:#fff;}
+thead th{padding:9px 11px;text-align:left;font-weight:500;font-size:12px;white-space:nowrap;}
+tbody tr{border-bottom:1px solid var(--gray-100);transition:background .15s;}
+tbody tr:hover{background:var(--navy-light);}
+tbody td{padding:8px 11px;vertical-align:middle;}
+.pacer-tag{display:inline-flex;align-items:center;gap:4px;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:500;}
+.pacer-tag.has{background:#E8F4FE;color:#1565C0;}
+.pacer-tag.none{background:var(--gray-100);color:var(--gray-500);}
+.ev-tag{display:inline-block;padding:2px 7px;border-radius:99px;font-size:11px;}
+.ev-tag.self{background:#EEF5E8;color:#2E6B1A;}
+.ev-tag.desig{background:var(--gold-light);color:var(--gold-dark);}
+.id-badge{display:inline-block;padding:2px 7px;border-radius:99px;font-size:11px;background:var(--navy-light);color:var(--navy);}
+.pacer-detail-row{background:#f0f4fb;display:none;}
+.pacer-detail-row td{padding:7px 14px 9px 28px;font-size:12px;color:var(--gray-700);}
+.pacer-detail-row.open{display:table-row;}
+.exp-btn{background:none;border:none;cursor:pointer;font-size:12px;color:var(--navy-mid);padding:2px 5px;border-radius:3px;}
+.exp-btn:hover{background:var(--navy-light);}
+.admin-header{background:var(--gray-100);border-bottom:1px solid var(--gray-200);padding:.9rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.7rem;}
+.admin-header h2{font-size:16px;color:var(--navy);font-weight:700;}
+.btn-add{background:var(--gold);color:var(--navy);font-weight:700;border:none;padding:7px 16px;border-radius:var(--radius);font-size:13px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:background .2s;}
+.btn-add:hover{background:#c9a43a;}
+.btn-del{background:rgba(192,57,43,.15);color:#c0392b;border:1px solid rgba(192,57,43,.2);border-radius:5px;padding:4px 10px;font-size:12px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;transition:all .2s;white-space:nowrap;}
+.btn-del:hover{background:rgba(192,57,43,.35);color:#fff;border-color:transparent;}
+.admin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:.9rem;margin-top:1rem;}
+.acard{background:#fff;border:1px solid var(--gray-200);border-radius:11px;overflow:hidden;box-shadow:var(--shadow);}
+.acard-head{background:var(--navy);color:#fff;padding:.75rem .9rem;display:flex;justify-content:space-between;align-items:center;gap:.4rem;}
+.acard-head h4{font-size:14px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;}
+.acard-body{padding:.75rem .9rem;font-size:13px;}
+.acard-body .row{display:flex;justify-content:space-between;align-items:center;padding:4px 0;border-bottom:1px solid var(--gray-100);color:var(--gray-700);}
+.acard-body .row:last-child{border-bottom:none;}
+.tog{position:relative;width:38px;height:20px;flex-shrink:0;}
+.tog input{opacity:0;width:0;height:0;position:absolute;}
+.tog-sl{position:absolute;inset:0;background:var(--gray-200);border-radius:99px;cursor:pointer;transition:.2s;}
+.tog-sl::before{content:'';position:absolute;width:14px;height:14px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s;}
+.tog input:checked+.tog-sl{background:var(--navy);}
+.tog input:checked+.tog-sl::before{transform:translateX(18px);}
+.status-pill{display:inline-block;padding:2px 8px;border-radius:99px;font-size:11px;font-weight:500;}
+.status-pill.open{background:#E8F5E9;color:#2E7D32;}
+.status-pill.closed{background:var(--gray-100);color:var(--gray-500);}
+.status-pill.visible{background:#E8F4FE;color:#1565C0;}
+.status-pill.hidden{background:var(--gray-100);color:var(--gray-500);}
+.admin-sel{padding:7px 11px;border:1px solid var(--gray-200);border-radius:var(--radius);font-family:'Noto Sans TC',sans-serif;font-size:13px;}
+.fb-status{display:flex;align-items:center;gap:7px;font-size:13px;padding:8px 12px;border-radius:7px;margin-bottom:1rem;}
+.fb-status.ok{background:#E8F5E9;color:#2E7D32;}
+.fb-status.err{background:#FFF3E0;color:#E65100;}
+.modal-overlay{display:none;position:fixed;inset:0;z-index:500;background:rgba(0,0,0,.5);align-items:center;justify-content:center;padding:1rem;}
+.modal-overlay.open{display:flex;}
+.modal{background:#fff;border-radius:14px;width:100%;max-width:480px;max-height:90vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.25);animation:slideUp .25s ease;}
+@keyframes slideUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+.modal-header{display:flex;align-items:center;justify-content:space-between;padding:1.1rem 1.4rem;border-bottom:1px solid var(--gray-200);}
+.modal-header h3{font-size:17px;color:var(--navy);font-family:'Noto Serif TC',serif;}
+.modal-close{background:none;border:none;font-size:22px;cursor:pointer;color:var(--gray-500);line-height:1;}
+.modal-body{padding:1.4rem;}
+.toast{position:fixed;bottom:1.5rem;right:1.5rem;left:1.5rem;max-width:360px;margin:0 auto;background:var(--navy);color:#fff;padding:11px 18px;border-radius:9px;font-size:14px;box-shadow:0 8px 24px rgba(0,0,0,.2);transform:translateY(100px);opacity:0;transition:all .3s ease;z-index:999;text-align:center;}
+.toast.show{transform:translateY(0);opacity:1;}
+.toast.error{border-left:4px solid var(--red);}
+.toast.success{border-left:4px solid var(--gold);}
+.empty-state{text-align:center;padding:2.5rem 1rem;color:var(--gray-500);}
+.empty-state .ico-lg{font-size:44px;opacity:.3;margin-bottom:.4rem;}
+.admin-login-wrap{min-height:calc(100vh - 58px);display:flex;align-items:center;justify-content:center;background:var(--gray-100);padding:1rem;}
+.login-card{background:#fff;border:1px solid var(--gray-200);border-radius:14px;padding:2.2rem;width:100%;max-width:320px;box-shadow:var(--shadow);text-align:center;}
+.login-card h3{font-size:19px;color:var(--navy);font-family:'Noto Serif TC',serif;margin-bottom:1.3rem;}
+.login-hint{font-size:12px;color:var(--gray-500);margin-top:.8rem;}
+@media(max-width:640px){
+  .nav-desktop{display:none;}
+  .hamburger{display:flex;}
+  .container,.container-wide{padding:1.4rem .9rem;}
+  .hero{padding:2rem .9rem 1.8rem;}
+  .hero h1{font-size:1.9rem;}
+  .signup-entry{grid-template-columns:1fr;}
+  .entry-card.full{grid-column:unset;}
+  .form-card{padding:1.2rem .9rem;}
+  .form-row,.ev-type-sel{grid-template-columns:1fr;}
+  .admin-header{padding:.8rem .9rem;}
+  .pacer-row{flex-direction:column;align-items:flex-start;gap:7px;}
+  .btn-pacer-open{width:100%;justify-content:center;}
+  .modal-overlay{align-items:flex-end;}
+  .modal{border-radius:14px 14px 0 0;max-height:95vh;}
+  .year-tabs,.reg-filter{gap:4px;}
+  .year-tab,.filter-btn{font-size:12px;padding:4px 10px;}
+  .hero-stats{gap:.7rem;}
+  .stat-pill{padding:6px 12px;font-size:12px;}
+}
+</style>
+</head>
+<body>
+<nav>
+  <div class="nav-logo">馬蹄響 <span>台中馬拉松社</span></div>
+  <div class="nav-desktop">
+    <button class="nav-tab active" data-tab="home" onclick="switchTab('home')">活動總覽</button>
+    <button class="nav-tab" data-tab="signup" onclick="switchTab('signup')">我要報名</button>
+    <button class="nav-tab" data-tab="list" onclick="switchTab('list')">報名名單</button>
+    <button class="nav-tab" data-tab="admin" onclick="switchTab('admin')">後台管理</button>
+  </div>
+  <button class="hamburger" id="hbg" onclick="toggleNav()" aria-label="選單">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+<div class="mobile-nav" id="mobile-nav">
+  <button class="nav-tab active" data-tab="home" onclick="switchTab('home');toggleNav()">活動總覽</button>
+  <button class="nav-tab" data-tab="signup" onclick="switchTab('signup');toggleNav()">我要報名</button>
+  <button class="nav-tab" data-tab="list" onclick="switchTab('list');toggleNav()">報名名單</button>
+  <button class="nav-tab" data-tab="admin" onclick="switchTab('admin');toggleNav()">後台管理</button>
+</div>
+<div class="toast" id="toast"></div>
+
+<!-- HOME -->
+<div class="view active" id="view-home">
+  <div class="hero">
+    <div class="hero-badge">扶輪服務計畫</div>
+    <h1>扶輪<span>馬蹄響</span></h1>
+    <p class="hero-sub">鼓勵扶輪人及寶眷、尊眷跑步，陪伴您完成人生第一場全程馬拉松。</p>
+    <div id="home-year-badge" class="year-badge-hero"></div>
+    <div class="hero-stats">
+      <div class="stat-pill"><strong id="stat-total">0</strong>位初馬選手</div>
+      <div class="stat-pill"><strong id="stat-pacer">0</strong>位已有推手</div>
+    </div>
+  </div>
+  <div class="container">
+    <div class="section-title">本年度初馬選手</div>
+    <p class="section-desc">以下為本年度參與「扶輪馬蹄響」的初馬選手。</p>
+    <div id="home-runners-wall" class="runners-wall"><div style="color:var(--gray-500);font-size:14px;">載入中…</div></div>
+    <div style="background:var(--navy-light);border-left:4px solid var(--gold);border-radius:8px;padding:1.1rem 1.3rem;margin-top:2.5rem;">
+      <div style="font-weight:700;color:var(--navy);margin-bottom:5px;">🏆 完成初馬獎勵</div>
+      <div style="font-size:13px;color:var(--gray-700);line-height:1.8;">
+        完成初馬者每人獲頒 <strong>新台幣 5,000 元獎勵金</strong> + 銀質徽章。<br>
+        獎勵金冠以社友個人名義提撥 <strong>100 美元（根除小兒麻痺）</strong> 及 <strong>2,000 台幣（中華扶輪教育基金）</strong>。<br>
+        <em style="color:var(--gold-dark);">健康又慈善，美哉扶輪！</em>
+      </div>
+    </div>
+    <div style="margin-top:1.8rem;text-align:center;">
+      <button class="btn-submit" style="max-width:210px;margin:0 auto;" onclick="switchTab('signup')">我要報名 →</button>
+    </div>
+  </div>
+</div>
+
+<!-- SIGNUP -->
+<div class="view" id="view-signup">
+  <div class="container">
+    <div class="section-title">我要報名</div>
+    <p class="section-desc">請選擇您要進行的操作。</p>
+    <div class="signup-entry">
+      <div class="entry-card active" id="entry-new" onclick="showBlock('new')"><div class="entry-icon">🏃</div><div class="entry-title">初馬選手報名</div><div class="entry-desc">首次參加扶輪馬蹄響，填寫個人基本資料完成報名。</div></div>
+      <div class="entry-card" id="entry-pacer" onclick="showBlock('pacer')"><div class="entry-icon">🤝</div><div class="entry-title">補填／修改推手資料</div><div class="entry-desc">已完成報名，以姓名與手機查詢後補填或修改推手資料。</div></div>
+      <div class="entry-card full" id="entry-cert" onclick="showBlock('cert')"><div class="entry-icon">🏅</div><div class="entry-title">上傳完賽證書</div><div class="entry-desc">完成全程馬拉松後，查詢報名資料上傳初馬選手及推手的完賽證書（JPG・PNG・PDF）。</div></div>
+    </div>
+
+    <!-- 初馬報名 -->
+    <div id="block-new">
+      <div id="signup-closed-banner" class="closed-banner" style="display:none;">⚠️ 目前尚未開放報名，請稍後再試或聯繫台中馬拉松社。</div>
+      <div id="signup-form-wrap">
+        <div class="form-card">
+          <div class="year-info-bar">📅 報名年度：<strong id="signup-year-label">—</strong></div>
+          <div class="fsec" style="margin-top:0;">選擇賽事類型</div>
+          <div class="ev-type-sel">
+            <label class="ev-opt selected" id="opt-self"><input type="radio" name="evtype" value="self" checked onchange="switchEvType('self')"><div class="ev-icon">🗺️</div><div class="ev-name">自己選擇賽事</div><div class="ev-desc">自行報名任何全馬賽事，填入名稱、日期及地點。</div></label>
+            <label class="ev-opt" id="opt-desig"><input type="radio" name="evtype" value="desig" onchange="switchEvType('desig')"><div class="ev-icon">🤝</div><div class="ev-name">指定賽事</div><div class="ev-desc">台中馬拉松社統一安排，社方協助報名並安排陪跑。</div><div class="ev-badge">社方安排</div></label>
+          </div>
+          <div id="self-ev-block">
+            <div class="fsec">賽事資訊</div>
+            <div class="fg"><label>賽事名稱 <span class="req">*</span></label><input type="text" id="f-ev-name" placeholder="例：2025 台北馬拉松"></div>
+            <div class="form-row">
+              <div class="fg"><label>舉辦日期 <span class="req">*</span></label><input type="date" id="f-ev-date"></div>
+              <div class="fg"><label>舉辦地點 <span class="req">*</span></label><input type="text" id="f-ev-loc" placeholder="例：台北市政府廣場"></div>
+            </div>
+          </div>
+          <div id="desig-ev-block" style="display:none;"><div class="fsec">選擇指定賽事</div><div id="desig-list-wrap"></div></div>
+          <div class="fsec">初馬選手基本資料</div>
+          <div class="form-row">
+            <div class="fg"><label>姓名 <span class="req">*</span></label><input type="text" id="f-name" placeholder="請輸入真實姓名"></div>
+            <div class="fg"><label>扶輪名 <span class="req">*</span></label><input type="text" id="f-rname" placeholder="例：松鼠"></div>
+          </div>
+          <div class="form-row">
+            <div class="fg"><label>身份 <span class="req">*</span></label><select id="f-identity"><option value="">-- 請選擇 --</option><option value="社友">社友</option><option value="寶眷/尊眷">寶眷／尊眷</option></select></div>
+            <div class="fg"><label>性別</label><select id="f-gender"><option value="">-- 請選擇 --</option><option value="男">男</option><option value="女">女</option></select></div>
+          </div>
+          <div class="form-row">
+            <div class="fg"><label>所屬扶輪社 <span class="req">*</span></label><input type="text" id="f-club" placeholder="例：台中馬拉松社"></div>
+            <div class="fg"><label>地區別</label><input type="text" id="f-district" placeholder="例：3490地區"></div>
+          </div>
+          <div class="form-row">
+            <div class="fg"><label>手機 <span class="req">*</span></label><input type="tel" id="f-phone" placeholder="0912-345-678"></div>
+            <div class="fg"><label>Email</label><input type="email" id="f-email" placeholder="your@email.com"></div>
+          </div>
+          <div class="form-row">
+            <div class="fg"><label>出生年月日 <span class="req">*</span></label><input type="date" id="f-birth"></div>
+            <div class="fg"><label>身分證字號 <span class="req">*</span></label><input type="text" id="f-idno" placeholder="A123456789" maxlength="10" style="text-transform:uppercase;letter-spacing:.05em;"></div>
+          </div>
+          <div class="form-row">
+            <div class="fg"><label>T恤尺寸</label><select id="f-tshirt"><option value="">-- 請選擇 --</option><option>XS</option><option>S</option><option>M</option><option>L</option><option>XL</option><option>2XL</option><option>3XL</option></select></div>
+            <div class="fg"><label>目標完賽時間</label><input type="text" id="f-goal" placeholder="例：5:30:00"></div>
+          </div>
+          <div class="fg"><label>備註</label><textarea id="f-note" placeholder="其他需要說明的事項…" style="min-height:56px;"></textarea></div>
+          <div class="fsec">推手資料</div>
+          <div class="pacer-row">
+            <div class="pacer-row-left">推手狀態：<strong id="pacer-status-text">待確認</strong></div>
+            <button type="button" class="btn-pacer-open" id="btn-pacer-toggle" onclick="togglePacerBlock()">＋ 填寫推手資料</button>
+          </div>
+          <div class="pacer-block" id="pacer-block">
+            <div class="pacer-block-hdr"><h4>🤝 推手資料填寫</h4><button type="button" class="btn-pacer-x" onclick="collapsePacer()">×</button></div>
+            <p class="pacer-block-desc">推手須具備全程馬拉松完賽經驗，並與您有相互認識的默契。</p>
+            <div class="form-row">
+              <div class="fg"><label>推手姓名 <span class="req">*</span></label><input type="text" id="p-name" placeholder="推手真實姓名"></div>
+              <div class="fg"><label>推手扶輪名</label><input type="text" id="p-rname" placeholder="例：飛魚"></div>
+            </div>
+            <div class="form-row">
+              <div class="fg"><label>推手身份</label><select id="p-identity"><option value="">-- 請選擇 --</option><option value="社友">社友</option><option value="寶眷/尊眷">寶眷／尊眷</option></select></div>
+              <div class="fg"><label>推手所屬扶輪社</label><input type="text" id="p-club" placeholder="例：台中馬拉松社"></div>
+            </div>
+            <div class="form-row">
+              <div class="fg"><label>推手地區別</label><input type="text" id="p-district" placeholder="例：3490地區"></div>
+              <div class="fg"><label>推手手機</label><input type="tel" id="p-phone" placeholder="0912-345-678"></div>
+            </div>
+            <div class="fg"><label>推手跑步資歷簡介</label><textarea id="p-intro" placeholder="簡單說明推手的跑步資歷…" style="min-height:68px;"></textarea></div>
+            <div style="display:flex;gap:7px;margin-top:.4rem;">
+              <button type="button" class="btn-submit" style="margin-top:0;flex:1;" onclick="confirmPacer()">確認推手資料</button>
+              <button type="button" onclick="clearPacer()" style="flex:0 0 auto;padding:10px 14px;background:none;border:1px solid var(--gray-200);border-radius:var(--radius);font-size:13px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;">清除</button>
+            </div>
+          </div>
+          <div style="font-size:12px;color:var(--gray-500);margin-top:1rem;padding:9px;background:var(--gray-100);border-radius:var(--radius);">✦ 個人資料僅供台中馬拉松社「扶輪馬蹄響」活動使用，不作其他用途。</div>
+          <button class="btn-submit" onclick="submitSignup()" id="btn-signup-submit">確認送出報名</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 補填推手 -->
+    <div id="block-pacer" style="display:none;">
+      <div id="pacer-search-step"><div class="form-card">
+        <div class="fsec">查詢報名資料</div>
+        <p style="font-size:14px;color:var(--gray-500);margin-bottom:1rem;">請輸入報名時填寫的姓名與手機號碼。</p>
+        <div class="form-row">
+          <div class="fg"><label>姓名 <span class="req">*</span></label><input type="text" id="s-name" placeholder="報名時填寫的姓名"></div>
+          <div class="fg"><label>手機 <span class="req">*</span></label><input type="tel" id="s-phone" placeholder="報名時填寫的手機"></div>
+        </div>
+        <button class="btn-submit" onclick="searchRegForPacer()">查詢報名資料</button>
+      </div></div>
+      <div id="pacer-fill-step" style="display:none;"><div class="form-card">
+        <div class="fsec">確認報名資料</div>
+        <div class="found-card" id="pacer-found-card"></div>
+        <div class="fsec">填寫／修改推手資料</div>
+        <div class="form-row">
+          <div class="fg"><label>推手姓名 <span class="req">*</span></label><input type="text" id="ep-name" placeholder="推手真實姓名"></div>
+          <div class="fg"><label>推手扶輪名</label><input type="text" id="ep-rname" placeholder="例：飛魚"></div>
+        </div>
+        <div class="form-row">
+          <div class="fg"><label>推手身份</label><select id="ep-identity"><option value="">-- 請選擇 --</option><option value="社友">社友</option><option value="寶眷/尊眷">寶眷／尊眷</option></select></div>
+          <div class="fg"><label>推手所屬扶輪社</label><input type="text" id="ep-club" placeholder="例：台中馬拉松社"></div>
+        </div>
+        <div class="form-row">
+          <div class="fg"><label>推手地區別</label><input type="text" id="ep-district" placeholder="例：3490地區"></div>
+          <div class="fg"><label>推手手機</label><input type="tel" id="ep-phone" placeholder="0912-345-678"></div>
+        </div>
+        <div class="fg"><label>推手跑步資歷簡介</label><textarea id="ep-intro" placeholder="簡單說明推手的跑步資歷…" style="min-height:68px;"></textarea></div>
+        <button class="btn-submit" onclick="submitPacerEdit()">儲存推手資料</button>
+        <button class="btn-secondary" onclick="resetPacerSearch()">← 重新查詢</button>
+      </div></div>
+    </div>
+
+    <!-- 上傳完賽證書 -->
+    <div id="block-cert" style="display:none;">
+      <div id="cert-search-step"><div class="form-card">
+        <div class="fsec">查詢報名資料</div>
+        <p style="font-size:14px;color:var(--gray-500);margin-bottom:1rem;">請輸入報名時填寫的姓名與手機號碼。</p>
+        <div class="form-row">
+          <div class="fg"><label>姓名 <span class="req">*</span></label><input type="text" id="cs-name" placeholder="報名時填寫的姓名"></div>
+          <div class="fg"><label>手機 <span class="req">*</span></label><input type="tel" id="cs-phone" placeholder="報名時填寫的手機"></div>
+        </div>
+        <button class="btn-submit" onclick="searchRegForCert()">查詢報名資料</button>
+      </div></div>
+      <div id="cert-upload-step" style="display:none;"><div class="form-card">
+        <div class="fsec">確認報名資料</div>
+        <div class="found-card" id="cert-found-card"></div>
+        <div class="fsec">上傳完賽證書</div>
+        <p style="font-size:13px;color:var(--gray-500);margin-bottom:.9rem;">請分別上傳初馬選手與推手的完賽證書。支援 JPG・PNG・PDF，單檔上限 10MB。</p>
+        <div id="gdrive-notice" style="background:#FFF8E1;border:1px solid #FFE082;border-radius:7px;padding:9px 12px;font-size:13px;color:#795548;margin-bottom:1rem;display:none;">⚠️ Google Drive 尚未設定，請至後台完成設定後即可啟用上傳。</div>
+        <div class="cert-box"><div class="cert-box-hdr" style="background:var(--navy);">🏃 初馬選手完賽證書</div><div class="cert-box-body">
+          <div id="runner-cert-status"></div>
+          <div class="upload-zone" id="runner-upload-zone" onclick="document.getElementById('runner-cert-input').click()"><div style="font-size:30px;">📄</div><p>點擊選擇檔案，或拖曳至此</p><p style="font-size:12px;">JPG・PNG・PDF，上限 10MB</p><input type="file" id="runner-cert-input" accept=".jpg,.jpeg,.png,.pdf" style="display:none;" onchange="handleCertFile('runner',this)"></div>
+          <div id="runner-cert-preview" style="display:none;margin-top:.7rem;"></div>
+          <button id="runner-cert-btn" class="btn-submit" style="margin-top:.7rem;display:none;" onclick="uploadCert('runner')">上傳初馬選手完賽證書</button>
+        </div></div>
+        <div class="cert-box" id="pacer-cert-section"><div class="cert-box-hdr" style="background:var(--navy-mid);">🤝 推手完賽證書</div><div class="cert-box-body">
+          <div id="pacer-cert-status"></div>
+          <div class="upload-zone" id="pacer-upload-zone" onclick="document.getElementById('pacer-cert-input').click()"><div style="font-size:30px;">📄</div><p>點擊選擇檔案，或拖曳至此</p><p style="font-size:12px;">JPG・PNG・PDF，上限 10MB</p><input type="file" id="pacer-cert-input" accept=".jpg,.jpeg,.png,.pdf" style="display:none;" onchange="handleCertFile('pacer',this)"></div>
+          <div id="pacer-cert-preview" style="display:none;margin-top:.7rem;"></div>
+          <button id="pacer-cert-btn" class="btn-submit" style="margin-top:.7rem;display:none;" onclick="uploadCert('pacer')">上傳推手完賽證書</button>
+        </div></div>
+        <button class="btn-secondary" onclick="resetCertSearch()">← 重新查詢</button>
+      </div></div>
+    </div>
+  </div>
+</div>
+
+<!-- LIST -->
+<div class="view" id="view-list">
+  <div class="container-wide">
+    <div class="section-title">報名名單</div>
+    <p class="section-desc">姓名部分遮蔽保護個人隱私。點擊「▶」可展開推手資訊。</p>
+    <div class="year-tabs" id="list-year-tabs"></div>
+    <div class="reg-filter">
+      <button class="filter-btn active" onclick="filterType('all',this)">全部</button>
+      <button class="filter-btn" onclick="filterType('self',this)">自選賽事</button>
+      <button class="filter-btn" onclick="filterType('desig',this)">指定賽事</button>
+    </div>
+    <div class="reg-table-wrap">
+      <table>
+        <thead><tr><th></th><th>#</th><th>扶輪名</th><th>姓名</th><th>身份</th><th>所屬社</th><th>地區</th><th>賽事</th><th>賽事名稱</th><th>推手</th><th>報名時間</th></tr></thead>
+        <tbody id="reg-tbody"></tbody>
+      </table>
+    </div>
+    <div class="empty-state" id="list-empty" style="display:none;"><div class="ico-lg">📋</div><p>本年度尚無報名資料</p></div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div class="view" id="view-admin">
+  <div id="admin-login" class="admin-login-wrap">
+    <div class="login-card">
+      <h3>後台管理</h3>
+      <div class="fg"><label>管理密碼</label><input type="password" id="admin-pw" placeholder="請輸入密碼" onkeydown="if(event.key==='Enter')adminLogin()"></div>
+      <button class="btn-submit" onclick="adminLogin()">登入</button>
+
+    </div>
+  </div>
+  <div id="admin-panel" style="display:none;">
+    <div class="admin-header">
+      <h2>後台管理 — 扶輪馬蹄響</h2>
+      <div style="display:flex;gap:7px;flex-wrap:wrap;">
+        <button class="btn-add" onclick="openYearModal()">＋ 新增年度</button>
+        <button class="btn-add" onclick="openEventModal()" style="background:var(--navy-mid);">＋ 新增指定賽事</button>
+        <button style="background:none;border:1px solid var(--gray-200);padding:6px 13px;border-radius:var(--radius);font-size:13px;cursor:pointer;font-family:'Noto Sans TC',sans-serif;" onclick="adminLogout()">登出</button>
+      </div>
+    </div>
+    <div class="container-wide">
+      <div id="fb-status-wrap" style="margin-top:1.2rem;"></div>
+      <div class="section-title" style="margin-top:1.3rem;">年度管理</div>
+      <p class="section-desc" style="margin-top:.3rem;">控制各年度的報名開放狀態與前台顯示。同一時間只能有一個年度開放報名。</p>
+      <div class="admin-grid" id="admin-years-grid"></div>
+      <div class="section-title" style="margin-top:2rem;">指定賽事管理</div>
+      <p class="section-desc" style="margin-top:.3rem;">新增後，報名頁面「指定賽事」選項中即可選擇。</p>
+      <div class="admin-grid" id="admin-events-grid"></div>
+      <div class="section-title" style="margin-top:2rem;">Google Drive 設定</div>
+      <p class="section-desc" style="margin-top:.3rem;">完賽證書上傳目的地。</p>
+      <div class="form-card" style="max-width:580px;">
+        <div style="background:#E8F5E9;border:1px solid #A5D6A7;border-radius:8px;padding:12px 16px;font-size:13px;color:#2E7D32;margin-bottom:1rem;">
+          ✅ Google Drive 已設定完成，完賽證書將自動上傳至指定資料夾。
+        </div>
+        <div style="font-size:13px;color:var(--gray-700);line-height:2;">
+          <div>資料夾 ID：<strong>1UvP2B0imwQmqof5uWQmDLlZP4UNwTGo8</strong></div>
+          <div>Web App：<strong style="word-break:break-all;font-size:11px;">AKfycbyz_06_b3V6MvnHl…（已設定）</strong></div>
+        </div>
+      </div>
+      <div class="section-title" style="margin-top:2rem;">Firebase 設定</div>
+      <p class="section-desc" style="margin-top:.3rem;">雲端資料庫連線資訊。</p>
+      <div class="form-card" style="max-width:580px;">
+        <div style="background:#E8F5E9;border:1px solid #A5D6A7;border-radius:8px;padding:12px 16px;font-size:13px;color:#2E7D32;margin-bottom:1rem;">
+          🔥 Firebase 已設定完成，所有裝置開啟網頁即自動連線至雲端資料庫。
+        </div>
+        <div style="font-size:13px;color:var(--gray-700);line-height:2;">
+          <div>專案 ID：<strong>rotaryrun</strong></div>
+          <div>資料庫區域：<strong>asia-southeast1（亞太）</strong></div>
+          <div>Auth Domain：<strong>rotaryrun.firebaseapp.com</strong></div>
+        </div>
+      </div>
+      <div style="margin-top:2rem;">
+        <div class="section-title">報名資料管理</div>
+        <div class="year-tabs" id="admin-year-tabs" style="margin-top:.8rem;"></div>
+        <div style="display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:.8rem;">
+          <span style="font-size:13px;color:var(--gray-700);">篩選：</span>
+          <select class="admin-sel" id="admin-reg-filter" onchange="renderAdminRegs()"><option value="all">全部</option><option value="self">自選賽事</option><option value="desig">指定賽事</option></select>
+          <select class="admin-sel" id="admin-desig-filter" onchange="renderAdminRegs()" style="display:none;"></select>
+          <span style="font-size:12px;color:var(--gray-500);" id="admin-reg-count"></span>
+          <button class="btn-add" onclick="exportCSV()" style="font-size:12px;margin-left:auto;">⬇ 匯出 CSV</button>
+        </div>
+        <div class="reg-table-wrap">
+          <table>
+            <thead><tr><th>#</th><th>年度</th><th>扶輪名</th><th>姓名</th><th>身份</th><th>所屬社</th><th>地區</th><th>手機</th><th>Email</th><th>性別</th><th>出生年月日</th><th>身分證字號</th><th>T恤</th><th>目標時間</th><th>賽事類型</th><th>賽事名稱</th><th>賽事日期</th><th>賽事地點</th><th>推手姓名</th><th>推手扶輪名</th><th>推手身份</th><th>推手社</th><th>推手地區</th><th>推手手機</th><th>初馬完賽證書</th><th>推手完賽證書</th><th>備註</th><th>報名時間</th><th>操作</th></tr></thead>
+            <tbody id="admin-reg-tbody"></tbody>
+          </table>
+        </div>
+        <div class="empty-state" id="admin-reg-empty" style="display:none;"><div class="ico-lg">📋</div><p>尚無報名資料</p></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal 年度 -->
+<div class="modal-overlay" id="year-modal">
+  <div class="modal"><div class="modal-header"><h3>新增年度</h3><button class="modal-close" onclick="closeModal('year-modal')">×</button></div>
+  <div class="modal-body">
+    <div class="fg"><label>年度起始年份 <span class="req">*</span></label><input type="number" id="yr-start" placeholder="例：2024" min="2010" max="2100"><p style="font-size:12px;color:var(--gray-500);margin-top:3px;">輸入起始年，自動產生「2024-2025」格式</p></div>
+    <div style="display:flex;gap:1.5rem;margin-top:.5rem;">
+      <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:14px;"><input type="checkbox" id="yr-open" checked style="width:15px;height:15px;accent-color:var(--navy);">開放報名</label>
+      <label style="display:flex;align-items:center;gap:7px;cursor:pointer;font-size:14px;"><input type="checkbox" id="yr-visible" checked style="width:15px;height:15px;accent-color:var(--navy);">前台顯示</label>
+    </div>
+    <button class="btn-submit" onclick="addYear()">新增年度</button>
+  </div></div>
+</div>
+
+<!-- Modal 指定賽事 -->
+<div class="modal-overlay" id="event-modal">
+  <div class="modal"><div class="modal-header"><h3>新增指定賽事</h3><button class="modal-close" onclick="closeModal('event-modal')">×</button></div>
+  <div class="modal-body">
+    <div class="fg"><label>指定賽事名稱 <span class="req">*</span></label><input type="text" id="ev-name" placeholder="例：2025 台中國際馬拉松"></div>
+    <button class="btn-submit" onclick="addEvent()">新增</button>
+  </div></div>
+</div>
+
+<script type="module">
+import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js';
+import { getDatabase, ref, set, get, update, remove, onValue }
+  from 'https://www.gstatic.com/firebasejs/10.12.0/firebase-database.js';
+
+// ── Firebase ──
+let fbApp=null, db=null;
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyAJYT_PdZlARNIT_tsG6WmoUNZH6v7lvFE",
+  authDomain: "rotaryrun.firebaseapp.com",
+  databaseURL: "https://rotaryrun-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "rotaryrun",
+  storageBucket: "rotaryrun.firebasestorage.app",
+  messagingSenderId: "884229433505",
+  appId: "1:884229433505:web:91710713e6b0a79ba568e0",
+  measurementId: "G-HF9YG980W6"
+};
+let fbConfig = FIREBASE_CONFIG;
+function initFirebase(cfg){
+  try{ if(fbApp) return true; if(!cfg.apiKey||!cfg.databaseURL) return false;
+    fbApp=initializeApp(cfg); db=getDatabase(fbApp); return true;
+  }catch(e){ console.error('Firebase init error:',e); return false; }
+}
+let fbReady=initFirebase(fbConfig);
+
+async function fbGet(path){ if(!db) return null; try{ const s=await get(ref(db,path)); return s.exists()?s.val():null; }catch(e){ return null; } }
+async function fbSet(path,val){ if(!db) return false; try{ await set(ref(db,path),val); return true; }catch(e){ return false; } }
+async function fbRemove(path){ if(!db) return false; try{ await remove(ref(db,path)); return true; }catch(e){ return false; } }
+
+function lsGet(k){ return JSON.parse(localStorage.getItem(k)||'null'); }
+function lsSet(k,v){ localStorage.setItem(k,JSON.stringify(v)); }
+
+// ── State ──
+let years=[], desigEvents=[], regs=[];
+let adminIn=false, adminYear='all', listYear='', listType='all';
+let pacerRegId=null, certRegId=null, certFiles={runner:null,pacer:null};
+let gdriveConfig={
+  scriptUrl:'https://script.google.com/macros/s/AKfycbyz_06_b3V6MvnHlDwwingA7y1BgQHp4Ib2rzkUpYggzfNQgGDcZcCC92U5xHjdBsQl/exec',
+  folderId:'1UvP2B0imwQmqof5uWQmDLlZP4UNwTGo8'
+};
+
+async function loadAll(){
+  if(fbReady){
+    const y=await fbGet('years');       years       = y ? Object.values(y) : [];
+    const d=await fbGet('desigEvents'); desigEvents = d ? Object.values(d) : [];
+    const r=await fbGet('regs');        regs        = r ? Object.values(r) : [];
+  } else {
+    years       = lsGet('mth_years')  ||[];
+    desigEvents = lsGet('mth_desig')  ||[];
+    regs        = lsGet('mth_regs')   ||[];
+  }
+}
+async function saveYears(){ const o={}; years.forEach(y=>o[y.id]=y); if(fbReady) await fbSet('years',o); lsSet('mth_years',years); }
+async function saveDesig(){ const o={}; desigEvents.forEach(e=>o[e.id]=e); if(fbReady) await fbSet('desigEvents',o); lsSet('mth_desig',desigEvents); }
+async function saveReg(r){ if(fbReady) await fbSet('regs/'+r.id,r); const i=regs.findIndex(x=>x.id===r.id); if(i>=0) regs[i]=r; else regs.push(r); lsSet('mth_regs',regs); }
+async function delReg(id){ if(fbReady) await fbRemove('regs/'+id); regs=regs.filter(r=>r.id!==id); lsSet('mth_regs',regs); }
+
+// ── UI helpers ──
+function showToast(msg,type='success'){ const t=document.getElementById('toast'); t.textContent=msg; t.className='toast '+type+' show'; setTimeout(()=>t.classList.remove('show'),3200); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+document.querySelectorAll('.modal-overlay').forEach(el=>el.addEventListener('click',e=>{ if(e.target===el) el.classList.remove('open'); }));
+
+// ── NAV (global) ──
+window.toggleNav=function(){
+  document.getElementById('mobile-nav').classList.toggle('open');
+  document.getElementById('hbg').classList.toggle('open');
+};
+document.addEventListener('click',function(e){
+  const m=document.getElementById('mobile-nav'), h=document.getElementById('hbg');
+  if(m.classList.contains('open')&&!m.contains(e.target)&&!h.contains(e.target)){
+    m.classList.remove('open'); h.classList.remove('open');
+  }
+});
+
+window.switchTab=function(t){
+  document.querySelectorAll('.view').forEach(v=>v.classList.remove('active'));
+  document.querySelectorAll('[data-tab]').forEach(b=>b.classList.toggle('active',b.dataset.tab===t));
+  document.getElementById('view-'+t).classList.add('active');
+  if(t==='home')   renderHome();
+  if(t==='signup'){ renderSignupYear(); renderDesigList(); }
+  if(t==='list')   renderList();
+  if(t==='admin')  renderAdmin();
+};
+
+// ── HOME ──
+function renderHome(){
+  const oy=years.find(y=>y.open);
+  const vis=years.filter(y=>y.visible).sort((a,b)=>b.label.localeCompare(a.label));
+  const label=oy?oy.label:(vis[0]?.label||'—');
+  document.getElementById('home-year-badge').textContent=`${label} 年度`;
+  const yr=regs.filter(r=>r.year===label);
+  document.getElementById('stat-total').textContent=yr.length;
+  document.getElementById('stat-pacer').textContent=yr.filter(r=>r.pacer?.name).length;
+  const wall=document.getElementById('home-runners-wall');
+  wall.innerHTML=yr.length?yr.map(r=>`<div class="runner-chip">🏃 ${r.rname||r.name}</div>`).join(''):'<div style="color:var(--gray-500);font-size:13px;">本年度尚無報名</div>';
+}
+
+// ── SIGNUP ──
+window.showBlock=function(b){
+  ['new','pacer','cert'].forEach(x=>{
+    document.getElementById('block-'+x).style.display=x===b?'':'none';
+    document.getElementById('entry-'+x).classList.toggle('active',x===b);
+  });
+  if(b==='pacer') resetPacerSearch();
+  if(b==='cert')  resetCertSearch();
+};
+
+function renderSignupYear(){
+  const oy=years.find(y=>y.open);
+  document.getElementById('signup-closed-banner').style.display=oy?'none':'';
+  document.getElementById('signup-form-wrap').style.display=oy?'':'none';
+  if(oy) document.getElementById('signup-year-label').textContent=oy.label;
+}
+
+window.switchEvType=function(type){
+  document.getElementById('self-ev-block').style.display=type==='self'?'':'none';
+  document.getElementById('desig-ev-block').style.display=type==='desig'?'':'none';
+  document.getElementById('opt-self').classList.toggle('selected',type==='self');
+  document.getElementById('opt-desig').classList.toggle('selected',type==='desig');
+};
+document.querySelectorAll('.ev-opt').forEach(el=>{
+  el.addEventListener('click',function(){ window.switchEvType(this.querySelector('input[type=radio]').value); });
+});
+
+function renderDesigList(){
+  const wrap=document.getElementById('desig-list-wrap');
+  if(!desigEvents.length){ wrap.innerHTML='<div class="no-desig">目前尚無指定賽事，請選擇「自己選擇賽事」。</div>'; return; }
+  wrap.innerHTML='<div class="desig-list">'+desigEvents.map(ev=>`
+    <label class="desig-item" onclick="selectDesig(this)">
+      <input type="radio" name="desig-ev" value="${ev.id}">
+      <div><div class="desig-item-name">🏅 ${ev.name}</div>
+      <div class="desig-item-note">台中馬拉松社統一安排報名與陪跑</div></div>
+    </label>`).join('')+'</div>';
+}
+window.selectDesig=function(el){ document.querySelectorAll('.desig-item').forEach(x=>x.classList.remove('selected')); el.classList.add('selected'); };
+
+window.togglePacerBlock=function(){ document.getElementById('pacer-block').classList.toggle('open'); };
+window.collapsePacer=function(){ document.getElementById('pacer-block').classList.remove('open'); };
+window.confirmPacer=function(){
+  const pName=document.getElementById('p-name').value.trim();
+  if(!pName){ showToast('請填寫推手姓名','error'); return; }
+  const display=document.getElementById('p-rname').value.trim()||pName;
+  document.getElementById('pacer-status-text').textContent=`已確認：${display}`;
+  const btn=document.getElementById('btn-pacer-toggle');
+  btn.textContent='✓ 修改推手資料'; btn.classList.add('filled');
+  document.getElementById('pacer-block').classList.remove('open');
+  showToast('✓ 推手資料已確認','success');
+};
+window.clearPacer=function(){
+  ['p-name','p-rname','p-club','p-district','p-phone','p-intro'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('p-identity').value='';
+  document.getElementById('pacer-status-text').textContent='待確認';
+  document.getElementById('btn-pacer-toggle').textContent='＋ 填寫推手資料';
+  document.getElementById('btn-pacer-toggle').classList.remove('filled');
+};
+
+window.submitSignup=async function(){
+  const oy=years.find(y=>y.open);
+  if(!oy){ showToast('目前無開放報名的年度','error'); return; }
+  const evType=document.querySelector('input[name=evtype]:checked').value;
+  let evName='',evDate='',evLoc='',desigId='';
+  if(evType==='self'){
+    evName=document.getElementById('f-ev-name').value.trim();
+    evDate=document.getElementById('f-ev-date').value;
+    evLoc=document.getElementById('f-ev-loc').value.trim();
+    if(!evName){ showToast('請填寫賽事名稱','error'); return; }
+    if(!evDate){ showToast('請選擇賽事日期','error'); return; }
+    if(!evLoc){  showToast('請填寫賽事地點','error'); return; }
+  } else {
+    const picked=document.querySelector('input[name=desig-ev]:checked');
+    if(!picked){ showToast('請選擇指定賽事','error'); return; }
+    desigId=picked.value;
+    evName=(desigEvents.find(e=>e.id===desigId)||{}).name||'';
+  }
+  const name=document.getElementById('f-name').value.trim();
+  const rname=document.getElementById('f-rname').value.trim();
+  const identity=document.getElementById('f-identity').value;
+  const club=document.getElementById('f-club').value.trim();
+  const phone=document.getElementById('f-phone').value.trim();
+  const birth=document.getElementById('f-birth').value;
+  const idno=document.getElementById('f-idno').value.trim().toUpperCase();
+  if(!name)    { showToast('請填寫姓名','error'); return; }
+  if(!rname)   { showToast('請填寫扶輪名','error'); return; }
+  if(!identity){ showToast('請選擇身份','error'); return; }
+  if(!club)    { showToast('請填寫所屬扶輪社','error'); return; }
+  if(!phone)   { showToast('請填寫手機號碼','error'); return; }
+  if(!birth)   { showToast('請填寫出生年月日','error'); return; }
+  if(!idno)    { showToast('請填寫身分證字號','error'); return; }
+  if(regs.find(r=>r.year===oy.label&&r.name===name&&r.phone===phone)){
+    showToast('本年度已有報名資料，如需補填推手請使用「補填推手資料」','error'); return;
+  }
+  const pName=document.getElementById('p-name').value.trim();
+  const btn=document.getElementById('btn-signup-submit');
+  btn.disabled=true; btn.innerHTML='<span class="spin"></span>送出中…';
+  const now=new Date();
+  const rec={
+    id:now.getTime().toString(), year:oy.label,
+    evType, desigId, evName, evDate, evLoc,
+    name, rname, identity, club,
+    district:document.getElementById('f-district').value.trim(),
+    phone, email:document.getElementById('f-email').value.trim(),
+    gender:document.getElementById('f-gender').value, birth, idno,
+    tshirt:document.getElementById('f-tshirt').value,
+    goal:document.getElementById('f-goal').value.trim(),
+    note:document.getElementById('f-note').value.trim(),
+    pacer:pName?{ name:pName, rname:document.getElementById('p-rname').value.trim(),
+      identity:document.getElementById('p-identity').value,
+      club:document.getElementById('p-club').value.trim(),
+      district:document.getElementById('p-district').value.trim(),
+      phone:document.getElementById('p-phone').value.trim(),
+      intro:document.getElementById('p-intro').value.trim() }:null,
+    createdAt:now.toLocaleString('zh-TW')
+  };
+  await saveReg(rec);
+  btn.disabled=false; btn.textContent='確認送出報名';
+  showToast('✓ 報名成功！感謝您參加扶輪馬蹄響','success');
+  ['f-ev-name','f-ev-loc','f-ev-date','f-name','f-rname','f-club','f-district','f-phone','f-email','f-birth','f-idno','f-goal','f-note']
+    .forEach(id=>{ const el=document.getElementById(id); if(el) el.value=''; });
+  ['f-identity','f-gender','f-tshirt'].forEach(id=>document.getElementById(id).value='');
+  document.querySelector('input[name=evtype][value=self]').checked=true;
+  window.switchEvType('self'); window.clearPacer();
+  document.getElementById('pacer-block').classList.remove('open');
+};
+
+// 補填推手
+window.searchRegForPacer=function(){
+  const name=document.getElementById('s-name').value.trim();
+  const phone=document.getElementById('s-phone').value.trim();
+  if(!name||!phone){ showToast('請輸入姓名與手機','error'); return; }
+  const oy=years.find(y=>y.open);
+  if(!oy){ showToast('目前無開放報名的年度','error'); return; }
+  const found=regs.find(r=>r.year===oy.label&&r.name===name&&r.phone===phone);
+  if(!found){ showToast('查無報名資料，請確認姓名與手機是否正確','error'); return; }
+  pacerRegId=found.id;
+  const p=found.pacer;
+  document.getElementById('pacer-found-card').innerHTML=`
+    <div class="found-card-lbl">找到您的報名資料（${found.year} 年度）</div>
+    <div class="found-card-name">${found.rname||''} ${found.name}</div>
+    <div class="found-card-meta">${found.identity||''} ・ ${found.club||''}</div>
+    <div class="found-card-pacer"><span style="color:var(--gray-500)">推手：</span><strong>${p?.name?(p.rname||p.name):'尚未填寫'}</strong></div>`;
+  if(p?.name){
+    document.getElementById('ep-name').value=p.name||'';
+    document.getElementById('ep-rname').value=p.rname||'';
+    document.getElementById('ep-identity').value=p.identity||'';
+    document.getElementById('ep-club').value=p.club||'';
+    document.getElementById('ep-district').value=p.district||'';
+    document.getElementById('ep-phone').value=p.phone||'';
+    document.getElementById('ep-intro').value=p.intro||'';
+  } else {
+    ['ep-name','ep-rname','ep-club','ep-district','ep-phone','ep-intro'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('ep-identity').value='';
+  }
+  document.getElementById('pacer-search-step').style.display='none';
+  document.getElementById('pacer-fill-step').style.display='';
+};
+window.submitPacerEdit=async function(){
+  const pName=document.getElementById('ep-name').value.trim();
+  if(!pName){ showToast('請填寫推手姓名','error'); return; }
+  const idx=regs.findIndex(r=>r.id===pacerRegId);
+  if(idx===-1){ showToast('資料異常，請重新查詢','error'); return; }
+  const updated={...regs[idx],pacer:{
+    name:pName, rname:document.getElementById('ep-rname').value.trim(),
+    identity:document.getElementById('ep-identity').value,
+    club:document.getElementById('ep-club').value.trim(),
+    district:document.getElementById('ep-district').value.trim(),
+    phone:document.getElementById('ep-phone').value.trim(),
+    intro:document.getElementById('ep-intro').value.trim()
+  }};
+  await saveReg(updated); showToast('✓ 推手資料已儲存！','success');
+  setTimeout(resetPacerSearch,1600);
+};
+function resetPacerSearch(){
+  pacerRegId=null;
+  document.getElementById('s-name').value=''; document.getElementById('s-phone').value='';
+  document.getElementById('pacer-search-step').style.display='';
+  document.getElementById('pacer-fill-step').style.display='none';
+}
+window.resetPacerSearch=resetPacerSearch;
+
+// 完賽證書
+window.searchRegForCert=function(){
+  const name=document.getElementById('cs-name').value.trim();
+  const phone=document.getElementById('cs-phone').value.trim();
+  if(!name||!phone){ showToast('請輸入姓名與手機','error'); return; }
+  const found=regs.find(r=>r.name===name&&r.phone===phone);
+  if(!found){ showToast('查無報名資料','error'); return; }
+  certRegId=found.id; certFiles={runner:null,pacer:null};
+  document.getElementById('cert-found-card').innerHTML=`
+    <div class="found-card-lbl">找到報名資料（${found.year} 年度）</div>
+    <div class="found-card-name">${found.rname||''} ${found.name}</div>
+    <div class="found-card-meta">${found.identity||''} ・ ${found.club||''}</div>
+    <div class="found-card-pacer"><span style="color:var(--gray-500)">推手：</span><strong>${found.pacer?.name?(found.pacer.rname||found.pacer.name):'尚未填寫'}</strong></div>`;
+  const rC=found.runnerCert;
+  document.getElementById('runner-cert-status').innerHTML=rC?`<div class="cert-done">✅ 已上傳　<a href="${rC.url}" target="_blank">查看 →</a>　<span style="font-size:11px;color:var(--gray-500);">${rC.uploadedAt||''}</span></div>`:'';
+  const pcs=document.getElementById('pacer-cert-section');
+  if(!found.pacer?.name){ pcs.style.display='none'; }
+  else{ pcs.style.display=''; const pc=found.pacerCert; document.getElementById('pacer-cert-status').innerHTML=pc?`<div class="cert-done">✅ 已上傳　<a href="${pc.url}" target="_blank">查看 →</a></div>`:''; }
+  document.getElementById('gdrive-notice').style.display=gdriveConfig.scriptUrl?'none':'';
+  ['runner','pacer'].forEach(r=>{ document.getElementById(`${r}-cert-preview`).style.display='none'; document.getElementById(`${r}-cert-preview`).innerHTML=''; document.getElementById(`${r}-cert-btn`).style.display='none'; document.getElementById(`${r}-cert-input`).value=''; });
+  document.getElementById('cert-search-step').style.display='none';
+  document.getElementById('cert-upload-step').style.display='';
+};
+window.handleCertFile=function(role,input){
+  const file=input.files[0]; if(!file) return;
+  if(file.size>10*1024*1024){ showToast('檔案超過 10MB','error'); return; }
+  certFiles[role]=file;
+  const prev=document.getElementById(`${role}-cert-preview`); prev.style.display='';
+  prev.innerHTML=file.type.startsWith('image/')?`<img src="${URL.createObjectURL(file)}" class="cert-preview-img"><p style="font-size:12px;color:var(--gray-500);margin-top:3px;">${file.name}</p>`:`<div style="background:var(--gray-100);border-radius:7px;padding:9px 12px;font-size:13px;">📄 ${file.name}</div>`;
+  document.getElementById(`${role}-cert-btn`).style.display='';
+};
+['runner','pacer'].forEach(role=>{
+  const z=document.getElementById(`${role}-upload-zone`); if(!z) return;
+  z.addEventListener('dragover',e=>{ e.preventDefault(); z.style.borderColor='var(--navy)'; });
+  z.addEventListener('dragleave',()=>z.style.borderColor='');
+  z.addEventListener('drop',e=>{ e.preventDefault(); z.style.borderColor=''; const f=e.dataTransfer.files[0]; if(!f) return; const inp=document.getElementById(`${role}-cert-input`); const dt=new DataTransfer(); dt.items.add(f); inp.files=dt.files; window.handleCertFile(role,inp); });
+});
+window.uploadCert=async function(role){
+  const file=certFiles[role]; if(!file){ showToast('請先選擇檔案','error'); return; }
+  if(!gdriveConfig.scriptUrl){ showToast('尚未設定 Google Drive','error'); return; }
+  const idx=regs.findIndex(r=>r.id===certRegId); if(idx===-1){ showToast('資料異常','error'); return; }
+  const btn=document.getElementById(`${role}-cert-btn`);
+  btn.innerHTML='<span class="spin"></span>上傳中…'; btn.disabled=true;
+  const reader=new FileReader();
+  reader.onload=async function(e){
+    const b64=e.target.result.split(',')[1];
+    const rec=regs[idx];
+    const fname=`${rec.year}__${rec.name}__${role==='runner'?'初馬':'推手'}__${file.name}`;
+    try{
+      const res=await fetch(gdriveConfig.scriptUrl,{method:'POST',body:JSON.stringify({folderId:gdriveConfig.folderId||'',fileName:fname,base64:b64,mimeType:file.type})});
+      const data=await res.json();
+      if(data.url){
+        const cd={url:data.url,fileName:fname,uploadedAt:new Date().toLocaleString('zh-TW')};
+        const u={...rec}; if(role==='runner') u.runnerCert=cd; else u.pacerCert=cd;
+        await saveReg(u);
+        document.getElementById(`${role}-cert-status`).innerHTML=`<div class="cert-done">✅ 上傳成功！　<a href="${data.url}" target="_blank">查看 →</a></div>`;
+        btn.style.display='none'; showToast('✅ 完賽證書上傳成功！','success');
+      } else throw new Error(data.error||'上傳失敗');
+    }catch(err){ btn.innerHTML=role==='runner'?'上傳初馬選手完賽證書':'上傳推手完賽證書'; btn.disabled=false; showToast(`上傳失敗：${err.message}`,'error'); }
+  };
+  reader.readAsDataURL(file);
+};
+function resetCertSearch(){
+  certRegId=null; certFiles={runner:null,pacer:null};
+  document.getElementById('cs-name').value=''; document.getElementById('cs-phone').value='';
+  document.getElementById('cert-search-step').style.display='';
+  document.getElementById('cert-upload-step').style.display='none';
+}
+window.resetCertSearch=resetCertSearch;
+
+// ── LIST ──
+function renderList(){
+  const vis=years.filter(y=>y.visible).sort((a,b)=>b.label.localeCompare(a.label));
+  if(!vis.length){ document.getElementById('list-year-tabs').innerHTML=''; renderListTable(); return; }
+  if(!listYear||!vis.find(y=>y.label===listYear)) listYear=vis[0].label;
+  document.getElementById('list-year-tabs').innerHTML=vis.map(y=>`<button class="year-tab${y.label===listYear?' active':''}" onclick="setListYear('${y.label}',this)">${y.label} 年度</button>`).join('');
+  renderListTable();
+}
+window.setListYear=function(y,btn){ listYear=y; document.querySelectorAll('#list-year-tabs .year-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderListTable(); };
+window.filterType=function(type,btn){ listType=type; document.querySelectorAll('.reg-filter .filter-btn').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderListTable(); };
+function mask(n){ if(!n)return''; if(n.length<=1)return n; if(n.length===2)return n[0]+'○'; return n[0]+'○'.repeat(n.length-2)+n[n.length-1]; }
+function renderListTable(){
+  let data=regs.filter(r=>r.year===listYear);
+  if(listType==='self')  data=data.filter(r=>r.evType==='self');
+  if(listType==='desig') data=data.filter(r=>r.evType==='desig');
+  const tb=document.getElementById('reg-tbody'), em=document.getElementById('list-empty');
+  if(!data.length){ tb.innerHTML=''; em.style.display=''; return; }
+  em.style.display='none';
+  tb.innerHTML=data.map((r,i)=>{ const hp=r.pacer?.name, rid='pr-'+r.id;
+    return `<tr>
+      <td>${hp?`<button class="exp-btn" onclick="toggleRow('${rid}',this)">▶</button>`:''}</td>
+      <td>${i+1}</td><td><strong>${r.rname||'—'}</strong></td><td>${mask(r.name)}</td>
+      <td><span class="id-badge">${r.identity||'—'}</span></td>
+      <td>${r.club||'—'}</td><td>${r.district||'—'}</td>
+      <td>${r.evType==='desig'?'<span class="ev-tag desig">指定</span>':'<span class="ev-tag self">自選</span>'}</td>
+      <td style="font-size:12px;">${r.evName||'—'}</td>
+      <td>${hp?`<span class="pacer-tag has">✓ ${r.pacer.rname||mask(r.pacer.name)}</span>`:'<span class="pacer-tag none">待確認</span>'}</td>
+      <td style="color:var(--gray-500);font-size:11px;">${r.createdAt||'—'}</td>
+    </tr>${hp?`<tr class="pacer-detail-row" id="${rid}"><td colspan="11">推手：${mask(r.pacer.name)}${r.pacer.rname?`（${r.pacer.rname}）`:''}${r.pacer.identity?` ・ ${r.pacer.identity}`:''}${r.pacer.club?` ・ ${r.pacer.club}`:''}</td></tr>`:''}`;
+  }).join('');
+}
+window.toggleRow=function(id,btn){ const row=document.getElementById(id); row.classList.toggle('open'); btn.textContent=row.classList.contains('open')?'▼':'▶'; };
+
+// ── ADMIN ──
+window.adminLogin=function(){
+  if(document.getElementById('admin-pw').value==='42195@tc'){
+    adminIn=true;
+    document.getElementById('admin-login').style.display='none';
+    document.getElementById('admin-panel').style.display='';
+    renderAdminAll(); loadSettingFields();
+  } else showToast('密碼錯誤','error');
+};
+window.adminLogout=function(){ adminIn=false; document.getElementById('admin-login').style.display=''; document.getElementById('admin-panel').style.display='none'; document.getElementById('admin-pw').value=''; };
+function renderAdmin(){ if(!adminIn){ document.getElementById('admin-login').style.display=''; document.getElementById('admin-panel').style.display='none'; } else { renderAdminAll(); loadSettingFields(); } }
+function renderAdminAll(){ renderFbStatus(); renderAdminYears(); renderAdminEvents(); renderAdminYearTabs(); renderAdminRegs(); }
+
+function renderFbStatus(){
+  document.getElementById('fb-status-wrap').innerHTML=fbReady
+    ?'<div class="fb-status ok">🔥 Firebase 已連線，資料即時同步至雲端。</div>'
+    :'<div class="fb-status err">⚠️ Firebase 未連線，目前使用本機儲存。請至下方「Firebase 設定」完成設定後重新整理頁面。</div>';
+}
+
+function renderAdminYears(){
+  const g=document.getElementById('admin-years-grid');
+  if(!years.length){ g.innerHTML='<div class="empty-state" style="grid-column:1/-1;"><div class="ico-lg">📅</div><p>尚無年度，請點「新增年度」</p></div>'; return; }
+  g.innerHTML=years.slice().sort((a,b)=>b.label.localeCompare(a.label)).map(y=>{ const cnt=regs.filter(r=>r.year===y.label).length, yid=y.id;
+    return `<div class="acard"><div class="acard-head"><h4>${y.label} 年度</h4><button class="btn-del" onclick="doDelYear('${yid}')">刪除</button></div>
+      <div class="acard-body">
+        <div class="row"><span>報名人數</span><span style="font-weight:700;color:var(--navy);">${cnt} 人</span></div>
+        <div class="row"><span>開放報名</span><div style="display:flex;align-items:center;gap:6px;"><label class="tog"><input type="checkbox" ${y.open?'checked':''} onchange="toggleYearProp('${yid}','open',this.checked)"><span class="tog-sl"></span></label><span class="status-pill ${y.open?'open':'closed'}">${y.open?'開放中':'關閉'}</span></div></div>
+        <div class="row"><span>前台顯示</span><div style="display:flex;align-items:center;gap:6px;"><label class="tog"><input type="checkbox" ${y.visible?'checked':''} onchange="toggleYearProp('${yid}','visible',this.checked)"><span class="tog-sl"></span></label><span class="status-pill ${y.visible?'visible':'hidden'}">${y.visible?'顯示中':'隱藏'}</span></div></div>
+      </div></div>`;
+  }).join('');
+}
+window.toggleYearProp=async function(id,prop,val){
+  const y=years.find(x=>x.id===id); if(!y) return;
+  if(prop==='open'&&val) years.forEach(x=>{ if(x.id!==id) x.open=false; });
+  y[prop]=val; await saveYears(); renderAdminYears(); renderSignupYear();
+};
+window.doDelYear=async function(id){
+  const y=years.find(x=>x.id===id); if(!y) return;
+  const cnt=regs.filter(r=>r.year===y.label).length;
+  if(cnt>0){ showToast(`此年度有 ${cnt} 筆資料，無法刪除`,'error'); return; }
+  if(!confirm(`確定刪除 ${y.label} 年度？`)) return;
+  years=years.filter(x=>x.id!==id); await saveYears(); renderAdminYears();
+};
+
+function renderAdminEvents(){
+  const g=document.getElementById('admin-events-grid');
+  if(!desigEvents.length){ g.innerHTML='<div class="empty-state" style="grid-column:1/-1;"><div class="ico-lg">🗓️</div><p>尚無指定賽事</p></div>'; return; }
+  g.innerHTML=desigEvents.map(ev=>{ const cnt=regs.filter(x=>x.evType==='desig'&&x.desigId===ev.id).length, eid=ev.id;
+    return `<div class="acard"><div class="acard-head"><h4>${ev.name}</h4><button class="btn-del" onclick="doDelEv('${eid}')">刪除</button></div><div class="acard-body"><div class="row"><span>累計報名</span><span style="font-weight:700;color:var(--navy);">${cnt} 人</span></div></div></div>`;
+  }).join('');
+}
+window.doDelEv=async function(id){ if(!confirm('確定刪除此指定賽事？')) return; desigEvents=desigEvents.filter(e=>e.id!==id); await saveDesig(); renderAdminEvents(); renderDesigList(); showToast('賽事已刪除'); };
+
+function renderAdminYearTabs(){
+  const all=years.slice().sort((a,b)=>b.label.localeCompare(a.label));
+  if(adminYear!=='all'&&!years.find(y=>y.label===adminYear)) adminYear='all';
+  document.getElementById('admin-year-tabs').innerHTML=
+    `<button class="year-tab${adminYear==='all'?' active':''}" onclick="setAdminYear('all',this)">全部年度</button>`+
+    all.map(y=>`<button class="year-tab${y.label===adminYear?' active':''}" onclick="setAdminYear('${y.label}',this)">${y.label} 年度</button>`).join('');
+  const sf=document.getElementById('admin-desig-filter'), cur=sf.value;
+  sf.innerHTML='<option value="all">所有指定賽事</option>'+desigEvents.map(ev=>`<option value="${ev.id}">${ev.name}</option>`).join('');
+  sf.value=cur||'all';
+}
+window.setAdminYear=function(y,btn){ adminYear=y; document.querySelectorAll('#admin-year-tabs .year-tab').forEach(b=>b.classList.remove('active')); btn.classList.add('active'); renderAdminRegs(); };
+
+function renderAdminRegs(){
+  const f=document.getElementById('admin-reg-filter').value;
+  const df=document.getElementById('admin-desig-filter').value;
+  document.getElementById('admin-desig-filter').style.display=f==='desig'?'':'none';
+  let data=regs;
+  if(adminYear!=='all') data=data.filter(r=>r.year===adminYear);
+  if(f==='self')  data=data.filter(r=>r.evType==='self');
+  if(f==='desig'){ data=data.filter(r=>r.evType==='desig'); if(df!=='all') data=data.filter(r=>r.desigId===df); }
+  document.getElementById('admin-reg-count').textContent=`共 ${data.length} 筆`;
+  const tb=document.getElementById('admin-reg-tbody'), em=document.getElementById('admin-reg-empty');
+  if(!data.length){ tb.innerHTML=''; em.style.display=''; return; }
+  em.style.display='none';
+  tb.innerHTML=data.map((r,i)=>{ const p=r.pacer||{}, rid=r.id;
+    return `<tr>
+      <td>${i+1}</td><td>${r.year||'—'}</td><td><strong>${r.rname||'—'}</strong></td><td>${r.name}</td><td>${r.identity||'—'}</td>
+      <td>${r.club||'—'}</td><td>${r.district||'—'}</td><td>${r.phone||'—'}</td><td style="font-size:11px;">${r.email||'—'}</td>
+      <td>${r.gender||'—'}</td><td>${r.birth||'—'}</td><td style="font-size:11px;">${r.idno||'—'}</td>
+      <td>${r.tshirt||'—'}</td><td>${r.goal||'—'}</td>
+      <td>${r.evType==='desig'?'指定':'自選'}</td><td>${r.evName||'—'}</td><td>${r.evDate||'—'}</td><td>${r.evLoc||'—'}</td>
+      <td>${p.name||'<span style="color:var(--gray-500)">未填</span>'}</td><td>${p.rname||'—'}</td><td>${p.identity||'—'}</td><td>${p.club||'—'}</td><td>${p.district||'—'}</td><td>${p.phone||'—'}</td>
+      <td>${r.runnerCert?`<a href="${r.runnerCert.url}" target="_blank" style="color:#1565C0;font-size:12px;">查看</a>`:'<span style="color:var(--gray-500);font-size:12px;">未上傳</span>'}</td>
+      <td>${r.pacerCert?`<a href="${r.pacerCert.url}" target="_blank" style="color:#1565C0;font-size:12px;">查看</a>`:'<span style="color:var(--gray-500);font-size:12px;">未上傳</span>'}</td>
+      <td style="font-size:11px;max-width:90px;">${r.note||'—'}</td>
+      <td style="font-size:11px;color:var(--gray-500);white-space:nowrap;">${r.createdAt||'—'}</td>
+      <td><button class="btn-del" onclick="doDelReg('${rid}')">刪除</button></td>
+    </tr>`;
+  }).join('');
+}
+window.renderAdminRegs=renderAdminRegs;
+window.doDelReg=async function(id){ if(!confirm('確定刪除此報名資料？')) return; await delReg(id); renderAdminRegs(); renderHome(); showToast('報名資料已刪除'); };
+
+window.openYearModal=function(){ document.getElementById('yr-start').value=''; document.getElementById('yr-open').checked=true; document.getElementById('yr-visible').checked=true; document.getElementById('year-modal').classList.add('open'); };
+window.addYear=async function(){
+  const s=parseInt(document.getElementById('yr-start').value);
+  if(!s||s<2010||s>2100){ showToast('請填寫正確的起始年份','error'); return; }
+  const label=`${s}-${s+1}`;
+  if(years.find(y=>y.label===label)){ showToast('此年度已存在','error'); return; }
+  const isOpen=document.getElementById('yr-open').checked;
+  if(isOpen) years.forEach(y=>y.open=false);
+  years.push({id:Date.now().toString(),label,open:isOpen,visible:document.getElementById('yr-visible').checked});
+  await saveYears(); closeModal('year-modal'); renderAdminYears(); renderSignupYear();
+  showToast(`✓ ${label} 年度已新增`,'success');
+};
+window.openEventModal=function(){ document.getElementById('ev-name').value=''; document.getElementById('event-modal').classList.add('open'); };
+window.addEvent=async function(){
+  const name=document.getElementById('ev-name').value.trim();
+  if(!name){ showToast('請填寫賽事名稱','error'); return; }
+  desigEvents.push({id:Date.now().toString(),name});
+  await saveDesig(); closeModal('event-modal'); renderAdminEvents(); renderDesigList();
+  showToast('✓ 指定賽事已新增','success');
+};
+
+function loadSettingFields(){
+  if(gdriveConfig.scriptUrl) document.getElementById('gdrive-script-url').value=gdriveConfig.scriptUrl;
+  if(gdriveConfig.folderId)  document.getElementById('gdrive-folder-id').value=gdriveConfig.folderId;
+}
+
+
+
+window.exportCSV=function(){
+  const f=document.getElementById('admin-reg-filter').value, df=document.getElementById('admin-desig-filter').value;
+  let data=regs;
+  if(adminYear!=='all') data=data.filter(r=>r.year===adminYear);
+  if(f==='self') data=data.filter(r=>r.evType==='self');
+  if(f==='desig'){ data=data.filter(r=>r.evType==='desig'); if(df!=='all') data=data.filter(r=>r.desigId===df); }
+  const h=['年度','扶輪名','姓名','身份','所屬社','地區','手機','Email','性別','出生年月日','身分證字號','T恤','目標時間','賽事類型','賽事名稱','賽事日期','賽事地點','推手姓名','推手扶輪名','推手身份','推手社','推手地區','推手手機','備註','報名時間'];
+  const rows=data.map(r=>{ const p=r.pacer||{};
+    return [r.year,r.rname,r.name,r.identity,r.club,r.district,r.phone,r.email,r.gender,r.birth,r.idno,r.tshirt,r.goal,r.evType==='desig'?'指定賽事':'自選賽事',r.evName,r.evDate,r.evLoc,p.name,p.rname,p.identity,p.club,p.district,p.phone,r.note,r.createdAt]
+    .map(v=>`"${String(v||'').replace(/"/g,'""')}"`).join(',');
+  });
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,\uFEFF'+encodeURIComponent([h.join(','),...rows].join('\n'));
+  a.download=`扶輪馬蹄響_${adminYear!=='all'?adminYear:'全部年度'}.csv`; a.click();
+};
+window.closeModal=closeModal;
+
+// ── INIT ──
+(async()=>{ await loadAll(); renderHome(); })();
+</script>
+</body>
+</html>
